@@ -192,7 +192,9 @@ public class SmartRide {
                 return 0;
         }
     }
-
+    public static double calculateFare(double distance, double pricePerKm){
+        return distance * pricePerKm;
+    }
     public static double calculateFare(double distance, double pricePerKm,double baseFear){
         return baseFear + (distance * pricePerKm);
     }
@@ -234,8 +236,15 @@ public class SmartRide {
     public static double applyDiscount(double fare, double discountPercentage){
         return fare * discountPercentage / 100;
     }
-    public static double calculatePassengerCharge(
-            double passengers) {
+    public static double applyDiscount(double fare, double discountPercentage,double maximumDiscountAmount){
+        double discount = fare * discountPercentage / 100;
+        if (discount > maximumDiscountAmount){
+            discount = maximumDiscountAmount;
+        }
+        return discount;
+    }
+
+    public static double calculatePassengerCharge(double passengers) {
 
         if (passengers > 3) {
 
